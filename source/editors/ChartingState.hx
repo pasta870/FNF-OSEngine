@@ -29,7 +29,11 @@ import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+#if android
+import android.flixel.FlxButton;
+#else
 import flixel.ui.FlxButton;
+#end
 import flixel.ui.FlxSpriteButton;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
@@ -410,6 +414,11 @@ class ChartingState extends MusicBeatState
 		add(zoomTxt);
 
 		updateGrid();
+
+		#if android
+		addVirtualPad(FULL, FULL);
+		#end
+
 		super.create();
 	}
 
@@ -425,6 +434,7 @@ class ChartingState extends MusicBeatState
 	function addSongUI():Void
 	{
 		UI_songTitle = new FlxUIInputText(10, 10, 70, _song.song, 8);
+             m
 		blockPressWhileTypingOn.push(UI_songTitle);
 
 		var check_voices = new FlxUICheckBox(10, 25, null, null, "Has voice track", 100);
@@ -438,7 +448,7 @@ class ChartingState extends MusicBeatState
 
 		var saveButton:FlxButton = new FlxButton(110, 8, "Save", function()
 		{
-			saveLevel();
+			saveLevel(); 
 		});
 
 		var reloadSong:FlxButton = new FlxButton(saveButton.x + 90, saveButton.y, "Reload Audio", function()
