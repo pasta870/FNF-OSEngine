@@ -1,8 +1,6 @@
 package editors;
 
-#if desktop
-import Discord.DiscordClient;
-#end
+
 import Conductor.BPMChangeEvent;
 import Section.SwagSection;
 import Song.SwagSong;
